@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+{% block title %}Home Delivery{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: black; }
+  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dynamicupdate.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="hero" id="hero">
+    <div class="container">
+        <h2 class="sub-headline">
+            <span class="first-letter">H</span>ome Delivery
+        </h2>
+        <h1 class="headline">Enjoy tasty meals at your home</h1>
+        <div class="headline-description">
+            <div class="seperator">
+                <div class="line line-left"></div>
+                <div class="asterisk"> <i class="fas fa-asterisk"></i></div>
+                <div class="line line-right"></div>
+            </div>
+            <div class="single-animation">
+                <h5>Make yourselves comfortable at home</h5>
+                <a href="https://classproject1-1.tycs05ayush.repl.co/" class="btn cta-btn">homepage</a>
+            </div>
+        </div>
+    </div>
+</section>
+<p class="fancy-border"> 
+  <br><br><br>
+</p>
+<section class="discover-our-story">
+    <div class="container">
+      <div class="table-holder">
+        <div class="rev-form">
+          {% if not info.iflogin %}
+          <p>You need to login in order to place an order !</p>
+          <form action="" method="POST" class="reservation-form" >
+            <div class="horizontal-buttons">
+              <input type="submit"  name="menu_type" value="Sign In" class="btn cta-btn">
+              <input type="submit"  name="menu_type" value="Sign Up" class="btn cta-btn">
+            </div>
+          </form>
+          {% endif %}
+          
+
+          <!------->
+          {% if info.iflogin %}
+            {% if not info.order %}
+              <form action="" method="POST" class="reservation-form" >
+                <div class="horizontal-buttons">
+                  <input type="submit"  name="menu_type" value="Breakfast" class="btn cta-btn">
+                  <input type="submit"  name="menu_type" value="Main Course" class="btn cta-btn">
+                  <input type="submit"  name="menu_type" value="Deserts" class="btn cta-btn">
+                  <input type="submit"  name="menu_type" value="Drinks" class="btn cta-btn">
+                </div>          
+              </form>
+
+              
+              <div class="fancy-border">
+              {% for item in info.menuitems %}
+              <form action="" method="POST" class="reservation-form" >
+              <div class="container">
+                  <div class="menu-info">
+                      <div class="menu-description padding-right">
+                          <div class="global-headline-menu">
+                              <div class="bill-class">
+                                  <p class="animate-left">{{ item[1] }}</p>  
+                                  <p class="animate-right">{{ item[5] }}</p>
+                                  <input type="text" name="quantity" placeholder="Quantity" pattern="[0-9]{1,1}" autofocus><br>
+                                  <input type="submit" id="{{item[0]}}" name="menu_type" value="Add Item" class="btn cta-btn" >
+                              </div>
+                              <input type="hidden" name="hidden_value" value="{{item[0]}}"  id="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </form>
+              {% endfor %}
+              </div>
+            {% endif %}
+
+            <div class="fancy-border">
+            <form action="" method="POST" class="" >
+              Your Order : <br>
+              ---------------------------
+              {% for item in info.bill %}
+              <div class="menu-info ">
+                <div class="container"> 
+                    <div class="menu-description padding-right">
+                        <div class="global-headline-menu">
+                            <div class="bill-class">
+                              <p class="animate-left">{{ item[1] }}</p> 
+                              <p class="animate-left">{{ item[2] }}</p> 
+                              <p class="animate-left">{{ item[3] }}</p> 
+                                <input type="submit" id="{{item[0]}}" name="menu_type" value="Remove Item" class="btn cta-btn">  
+                            </div>
+                            <input type="hidden" name="hidden_value" value="{{item[0]}}"  id="">
+                            <div class="asterisk">--------</i></div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              {% endfor %}
+            </form>
+            </div>
+
+            <form action="" method="POST" class="reservation-form" >
+              <div class="horizontal-buttons">
+                {% if not info.order%}
+                  <input type="submit"  name="menu_type" value="Place Order" class="btn cta-btn">
+                {% endif %}
+                {% if info.order%}
+                  <input type="submit"  name="menu_type" value="Cancel Order" class="btn cta-btn">
+                {% endif %}
+              </div>          
+            </form>
+          {% endif %}
+
+
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

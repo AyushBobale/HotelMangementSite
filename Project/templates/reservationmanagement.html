@@ -1,0 +1,74 @@
+{% extends "stafflayout.html" %}
+{% block title %}Reservation Managment{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: black; }
+  </style>
+{% endblock %}
+{% block content %}
+<section class="hero" id="hero">
+    <div class="container">
+        <h2 class="sub-headline">
+            <span class="first-letter">R</span>eservation
+        </h2>
+        <h1 class="headline">Dashboard</h1>
+        <div class="headline-description">
+            <div class="seperator">
+                <div class="line line-left"></div>
+                <div class="asterisk"> <i class="fas fa-asterisk"></i></div>
+                <div class="line line-right"></div>
+            </div>
+            <div class="single-animation">
+                <h5>Manage Reservations</h5>
+                <a href="https://ClassProject1-1.tycs05ayush.repl.co" class="btn cta-btn">homepage</a>
+            </div>
+        </div>
+    </div>
+</section>
+<p class="fancy-border"> 
+  <br><br><br><br><br>
+</p>
+
+<!-- Employee menu begins--->
+{% for item in info.reservations %}
+    <div class="container">
+        <div class="menu-info fancy-border">
+            <div class="menu-description padding-right animate-left">
+                <div class="global-headline-menu">
+                    <h2 class="sub-headline">
+                        <span class="first-letter"></span>
+                    </h2>
+                    <div class="asterisk">------------------------------</div>
+                    <div class="horizontal-buttons">
+                      <p> Name : {{ item[0] }}  </p>
+                      <p> People : {{ item[1] }} </p>
+                      <p> Date : {{ item[2] }} </p>
+                      <p> Time : {{ item[3] }} </p>
+                      <p> Exipred : {{ item[4] }} </p>
+                      <p> Occupied : {{ item[5] }} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-menu-img animate-right">
+                <div class="horizontal-buttons">
+                  <form action="#" method="POST" class="reservation-form">
+                    <input type="hidden" name="username" value="{{item[0]}}">
+                    <div class="horizontal-buttons">
+                      {% if item[4] != 'True'  %}
+                        {% if item[5] != 'True'  %}
+                          <input type="submit" name="submit_button" value="Occupied" class="btn cta-btn">
+                        {% endif %}
+                      <input type="submit" name="submit_button" value="Expired" class="btn cta-btn">
+                      {% endif %}
+                    </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---End of menu element-->
+{% endfor %}
+
+
+{% endblock %}

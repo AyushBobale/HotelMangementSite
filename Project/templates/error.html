@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}Error {% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: black; }
+  </style>
+{% endblock %}
+{% block content %}
+<section class="hero" id="hero">
+    <div class="container">
+        <h2 class="sub-headline">
+            <span class="first-letter">S</span>orry !
+        </h2>
+        <h1 class="headline">We have encountered a problem </h1>
+        
+        <div class="headline-description">
+            <div class="seperator">
+                <div class="line line-left"></div>
+                <div class="asterisk"> <i class="fas fa-asterisk"></i></div>
+                <div class="line line-right"></div>
+            </div>
+            <div class="single-animation">
+                <h5>We shall investigate and see to it that this problem is not repeated agian</h5>
+                <a href="https://classproject1-1.tycs05ayush.repl.co/" class="btn cta-btn">homepage</a>
+            </div>
+        </div>
+    </div>
+</section>
+  {{ error }}
+{% endblock %}

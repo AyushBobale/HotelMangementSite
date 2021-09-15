@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block title %}Drinks{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: black; }
+  </style>
+{% endblock %}
+{% block content %}
+<section class="hero" id="hero">
+    <div class="container">
+        <h2 class="sub-headline">
+            <span class="first-letter">M</span>enu
+        </h2>
+        <h1 class="headline">Experience the exquisite diversity</h1>
+        <div class="headline-description">
+            <div class="seperator">
+                <div class="line line-left"></div>
+                <div class="asterisk"> <i class="fas fa-asterisk"></i></div>
+                <div class="line line-right"></div>
+            </div>
+            <div class="single-animation">
+                <h5>We’re always in the mood for food</h5>
+                <a href="https://ClassProject1-1.tycs05ayush.repl.co/menu" class="btn cta-btn">Menu</a>
+            </div>
+        </div>
+    </div>
+</section>
+<p class="fancy-border"> 
+  <br><br><br><br><br>
+</p>
+<!-- Hero ends here--->
+<section class="tasteful-recipes between">
+    <div class="container">
+        <div class="global-headline">
+            <div class="animate-top">
+                <h2 class="sub-headline">
+                    <span class="first-letter">R</span>efreshing
+                </h2>
+            </div>
+            <div class="animate-bottom">
+                <h1 class="headline">Drinks</h1>
+                <a href="https://ClassProject1-1.tycs05ayush.repl.co/menu" class="btn cta-btn">Menu</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- tasteful ends here--->
+<!-- Salad menu begins--->
+{% for item in info.menuitems %}
+    <div class="container">
+        <div class="menu-info fancy-border">
+            <div class="menu-description padding-right animate-left">
+                <div class="global-headline-menu">
+                    <h2 class="sub-headline">
+                        <span class="first-letter"></span>{{ item[1] }}
+                    </h2>
+                    <div class="asterisk">------------------------------</div>
+                    <p>{{ item[2] }}</p>
+                    <p>Ingredients : {{ item[3] }}</p>
+                    <p>{{ item[5] }}</p>
+                </div>
+            </div>
+            <div class="restaurant-menu-img animate-right">
+                <img src = "{{ item[4] }}" alt="Not found">
+            </div>
+        </div>
+    </div>
+    <!---End of menu element-->
+{% endfor %}
+{% endblock %}

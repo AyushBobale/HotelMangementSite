@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .important { color: black; }
+</style>
+{% endblock %}
+{% block content %}
+<section class="hero" id="hero">
+    <div class="container">
+        <h2 class="sub-headline">
+            <span class="first-letter">W</span>elcome 
+            {% if info.iflogin%}
+            {{info.username}}
+            {% endif %}
+        </h2>
+        <h1 class="headline">The Bytes!</h1>
+        <div class="headline-description">
+            <div class="seperator">
+                <div class="line line-left"></div>
+                <div class="asterisk"> <i class="fas fa-asterisk"></i></div>
+                <div class="line line-right"></div>
+            </div>
+            <div class="single-animation">
+                <h5>Ready to be open</h5>
+                <a href="#" class="btn cta-btn" >Explore</a><br><br>
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    {% for msg in messages%}
+                      <p>{{msg}}</p>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</section>
+<!---Hero ends---->
+<section class="discover-our-story">
+    <div class="container">
+        <div class="restaurant-info">
+            <div class="restaurant-description padding-right animate-left">
+                <div class="global-headline">
+                    <h2 class="sub-headline">
+                        <span class="first-letter">D</span>iscover
+                    </h2>
+                    <h1 class="headline headline-dark">Our Story</h1>
+                    <div class="asterisk"> <i class="fas fa-asterisk"></i></div>
+                </div>
+                <p>This lorem ipsum generator is made for all the webdesigners, designers, webmasters and others who need
+lorem ipsum. Generator is made the way that everyone can use it, but especially for projects which need html
+ markup. You can decide which html tags you want and our generator will generate just as you specified.
+                </p>
+                <a href="#" class="btn body-btn">About Us</a>
+            </div>
+            <div class="restaurant-info-img animate-right">
+                <img src="{{url_for('static',filename='images/our-story-1.jpg')}}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+    <!---Discover ends here--->
+<section class="tasteful-recipes between">
+    <div class="container">
+        <div class="global-headline">
+            <div class="animate-top">
+                <h2 class="sub-headline">
+                    <span class="first-letter">T</span>astefull
+                </h2>
+            </div>
+            <div class="animate-bottom">
+                <h1 class="headline">Recipes</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!---tasteful ends here--->
+<section class="discover-our-menu">
+    <div class="container">
+        <div class="restaurant-info">
+            <div class="image-group padding-right animate-left">
+                <img src="{{url_for('static', filename='images/menu-group-1.jpg')}}" alt="">
+                <img src="{{url_for('static', filename='images/menu-group-2.jpg')}}" alt="">
+                <img src="{{url_for('static', filename='images/menu-group-3.jpg')}}" alt="">
+                <img src="{{url_for('static', filename='images/menu-group-4.jpg')}}" alt="">
+            </div>
+            <div class="restaurant-description animate-right">
+                <div class="global-headline">
+                    <h2 class="sub-headline">
+                        <span class="first-letter">D</span>iscover
+                    </h2>
+                    <h1 class="headline headline-dark">Menu</h1>
+                    <div class="asterisk"> <i class="fas fa-asterisk"></i></div>
+                </div>
+                <p>This lorem ipsum generator is made for all the webdesigners, designers, webmasters and others who need
+lorem ipsum. Generator is made the way that everyone can use it, but especially for projects which need html
+ markup. You can decide which html tags you want and our generator will generate just as you specified.
+                </p>
+                <a href="#" class="btn body-btn">View full Menu</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!---Discover our menu ends--->
+<section class="perfect-blend between">
+    <div class="container">
+        <div class="global-headline">
+            <div class="animate-top">
+                <h2 class="sub-headline">
+                    <span class="first-letter">T</span>he perfect
+                </h2>
+            </div>
+            <div class="animate-bottom">
+                <h1 class="headline">blend</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!---the perfect bkend ends--->
+<section class="culinary-delight">
+    <div class="restaurant-info">
+        <div class="restaurant-description padding-right animate-left">
+            <div class="global-headline">
+                <h2 class="sub-headline">
+                    <span class="first-letter">C</span>ulinary
+                </h2>
+                <h1 class="headline headline-dark">Delight</h1>
+                <div class="asterisk"> <i class="fas fa-asterisk"></i></div>
+            </div>
+
+            <p>This lorem ipsum generator is made for all the webdesigners, designers, webmasters and others who need
+lorem ipsum. Generator is made the way that everyone can use it, but especially for projects which need html
+markup. You can decide which html tags you want and our generator will generate just as you specified.
+            </p>
+            <a href="#" class="btn body-btn">Make a reservation</a>
+            </div>
+        <div class="image-group">
+            <img src="{{url_for('static',filename='images/delight-group-1.jpg')}}" class="animate-top" alt="">
+            <img src="{{url_for('static',filename='images/delight-group-2.jpg')}}" class="animate-bottom" alt="">
+        </div>
+    </div>
+</section>
+<!----Culinary delight ends--->
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block title %}Reservation{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: black; }
+  </style>
+{% endblock %}
+{% block content %}
+<section class="hero" id="hero">
+    <div class="container">
+        <h2 class="sub-headline">
+            <span class="first-letter">R</span>eservation 
+        </h2>
+        <h1 class="headline">GET yourselves a table booked</h1>
+        <div class="headline-description">
+            <div class="seperator">
+                <div class="line line-left"></div>
+                <div class="asterisk"> <i class="fas fa-asterisk"></i></div>
+                <div class="line line-right"></div>
+            </div>
+            <div class="single-animation">
+                <h5>We have limited seats !</h5>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="discover-our-story">
+    <div class="container">
+      <div class="table-holder">
+        <div class="rev-form">
+          {% if info.iflogin %}
+            <form action="" method="POST" class="reservation-form" >
+              Date : <br>
+              <input type="date" name="date" placeholder="Date" required="required">  <br>
+              Time : <br>
+              <input type="time" name="time" placeholder="Time" required="required" max="23:00" min="10:00" step="60"> <br>
+              <input type="text" name="noofpeople" placeholder="Number of people in party [1-8]" required="required" pattern="[1-8]{1}">
+              Our organization is open from 10:00 to 24:00 <br>
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  {% for msg in messages%}
+                    {{msg}} <br>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+              
+              {% if not info.reservation %}
+              <input type="submit" name="submit_button" value="Register" class="btn cta-btn">
+              {% endif %}
+            </form>
+            {% if info.reservation %}
+              <form action="" method="POST" class="reservation-form" >
+                <input type="submit" name="submit_button" value="Cancel Registration" class="btn cta-btn">
+              </form>
+            {% endif %}
+          {% endif %}
+          {% if not info.iflogin %} 
+          <p>You need to login in order to reserve a table</p>
+            <div class="horizontal-buttons">
+              <a href="https://classproject1-1.tycs05ayush.repl.co/signup"><button class="btn cta-btn">Sign Up</button></a>
+              <a href="https://classproject1-1.tycs05ayush.repl.co/signin"><button class="btn cta-btn">Sign In</button></a>
+            </div>
+          {% endif %}
+        </div>
+        
+
+        <!---
+        <div class="tables fancy-border">
+            <div class="animate-left center-tables">
+                <div class="left-table">
+                  {% for _ in range(4) %}
+                    <div class="col">
+                      {% for _ in range(4) %}
+                        <div class="fancy-border table">
+                          <i class="fas fa-hamburger"></i>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endfor %}
+                </div>
+            </div>
+            <div class=" animate-right center-tables">
+                <div class="right-table">
+                  {% for _ in range(4) %}
+                    <div class="col">
+                      {% for _ in range(4) %}
+                        <div class="fancy-border table">
+                          <i class="fas fa-hamburger"></i>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endfor %}
+                </div>
+            </div>
+          </div>
+      </div>
+      ----->
+    </div>
+</section>
+
+
+{% endblock %}

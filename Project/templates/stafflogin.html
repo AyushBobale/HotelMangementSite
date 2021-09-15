@@ -1,0 +1,35 @@
+{% extends "stafflayout.html" %}
+{% block title %}Personnel Login{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: black; }
+  </style>
+{% endblock %}
+{% block content %}
+<!--- Remeber to add the font awesomr icons for the login and password --->
+<section class="hero" id="hero">
+    <div class="container">
+      <br><br><br><br><br><br>
+      <h2 class="sub-headline">
+            <span class="first-letter">S</span>taff Login 
+      </h2>
+      <br><br><br><br><br><br>
+      <form action="#" method="POST" class="custom-form" >
+        <input type="text" name="username" placeholder="Username" required="required">  
+        <input type="password" name="password" placeholder="Password atleast 5 character" required="required" pattern="[A-Za-z0-9]{5,16}">  
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for msg in messages%}
+              <p>{{msg}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <input type="submit" name="submit_button" value="Login" class="btn cta-btn">
+      </form>
+      <br><br><br><br>
+    </div>
+
+    
+</section>
+{% endblock %}
